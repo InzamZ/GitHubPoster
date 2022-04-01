@@ -140,6 +140,6 @@ jobs:
           github-token: ${{ secrets.G_T }}
           commit-message: "Make new poster"
           files: OUT_FOLDER/*
-          rebase: "true"
+          force-add: "true"
           name: ${{ env.GITHUB_NAME }}
           email: ${{ env.GITHUB_EMAIL }}
