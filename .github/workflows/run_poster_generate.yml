@@ -132,7 +132,7 @@ jobs:
       - name: Run sync codeforces script
         if: contains(env.TYPE, 'codeforces')
         run: |
-          python3 codeforces/codeforces_loader
+          python3 codeforces/codeforces_loader.py
           python3 -m github_poster json --json_file "data.json" --me ${{ env.ME }} --with-animation
 
       - name: Mv svg files to examples
