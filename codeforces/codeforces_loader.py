@@ -33,7 +33,7 @@ def main():
                 else:
                     data[tmp] += 1
     # print(data)
-    with open("data/data.json","x") as f:
+    with open("data.json","w") as f:
         f.write(json.dumps(data))
 
 if __name__ == '__main__':
