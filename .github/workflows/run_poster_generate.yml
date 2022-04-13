@@ -134,12 +134,22 @@ jobs:
         if: github.repository_owner == 'yihong0618'
         run: mv OUT_FOLDER/*.svg examples/ && mv OUT_FOLDER/*.stl examples/
 
-      - name: Push new svg posters
-        uses: github-actions-x/commit@v2.6
+      # - name: Push new svg posters
+      #   uses: github-actions-x/commit@v2.6
+      #   with:
+      #     github-token: ${{ secrets.G_T }}
+      #     commit-message: "Make new poster"
+      #     files: OUT_FOLDER/*
+      #     force-add: "true"
+      #     name: ${{ env.GITHUB_NAME }}
+      #     email: ${{ env.GITHUB_EMAIL }}
+      - name: Run safe dir
+        run: |
+          git config --global --add safe.directory /github/workspace
+
+      - name: Push README
+        uses: actions-js/push@master
         with:
-          github-token: ${{ secrets.G_T }}
-          commit-message: "Make new poster"
-          files: OUT_FOLDER/*
-          force-add: "true"
-          name: ${{ env.GITHUB_NAME }}
-          email: ${{ env.GITHUB_EMAIL }}
+          github_token: ${{ secrets.G_T }}
+          branch: ${{ github.head_ref }}
+          force: true
