@@ -42,6 +42,12 @@ jobs:
           python -m pip install --upgrade pip
           pip install -r requirements.txt
         if: steps.pip-cache.outputs.cache-hit != 'true'
+      
+      - name: Run sync codeforces script
+        if: contains(env.TYPE, 'codeforces')
+        run: |
+          python3 codeforces/codeforces_loader.py
+          python3 -m github_poster json --json_file "data.json" --me "Codeforces" --with-animation
 
       - name: Run sync ns script
         if: contains(env.TYPE, 'ns')
@@ -128,12 +134,6 @@ jobs:
         if: contains(env.TYPE, 'multiple')
         run: |
           python3 -m github_poster multiple --types "github, twitter" --github_user_name ${{ secrets.G_USER_NAME }} --twitter_user_name ${{ secrets.TWITTER_USER_NAME }} --year 2019-2021
-      
-      - name: Run sync codeforces script
-        if: contains(env.TYPE, 'codeforces')
-        run: |
-          python3 codeforces/codeforces_loader.py
-          python3 -m github_poster json --json_file "data.json" --me ${{ env.ME }} --with-animation
 
       - name: Mv svg files to examples
         # only for me to show
