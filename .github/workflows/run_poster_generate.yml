@@ -9,7 +9,7 @@ env:
   # please change to your own config.
   # this actions generate only this year
   # If you fork this please change the type to yours below
-  TYPE: " duolingo, twitter, bilibili, leetcode, github " # support strava/gpx/ns/cichang/shanbay/duolingo/issue/leetcode/twitter/github/gitlab/kindle/bilibili/wakatime/dota2/forest, Please change the 'pass' it to your own separated by commas
+  TYPE: " duolingo, twitter, bilibili, leetcode, github , strava" # support strava/gpx/ns/cichang/shanbay/duolingo/issue/leetcode/twitter/github/gitlab/kindle/bilibili/wakatime/dota2/forest, Please change the 'pass' it to your own separated by commas
   ME: InzamZ
   GITHUB_NAME: InzamZ
   GITHUB_EMAIL: me@inzamz.top
@@ -51,7 +51,7 @@ jobs:
       - name: Run sync strava script
         if: contains(env.TYPE, 'strava')
         run: |
-          python -m github_poster strava --strava_client_id ${{ secrets.STRAVA_CLIENT_ID }} --strava_client_secret ${{ secrets.STRAVA_CLIENT_SECRET }} --strava_refresh_token ${{ secrets.STRAVA_CLIENT_REFRESH_TOKEN }} --me ${{ env.ME }} --year 2012-2021 --is-circular
+          python -m github_poster strava --strava_client_id ${{ secrets.STRAVA_CLIENT_ID }} --strava_client_secret ${{ secrets.STRAVA_CLIENT_SECRET }} --strava_refresh_token ${{ secrets.STRAVA_CLIENT_REFRESH_TOKEN }} --me ${{ env.ME }} --year 2022-2022 --is-circular
 
       - name: Run sync shanbay script
         if: contains(env.TYPE, 'shanbay')
