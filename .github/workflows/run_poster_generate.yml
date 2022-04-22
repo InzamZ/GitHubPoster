@@ -144,6 +144,12 @@ jobs:
       #     force-add: "true"
       #     name: ${{ env.GITHUB_NAME }}
       #     email: ${{ env.GITHUB_EMAIL }}
+      
+      - name: Mv svg files to examples
+        run: |
+           mv OUT_FOLDER/*.svg examples/ && mv OUT_FOLDER/*.stl examples/
+
+
       - name: Run safe dir
         run: |
           git config --global --add safe.directory /github/workspace
