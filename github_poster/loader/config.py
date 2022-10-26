@@ -5,7 +5,7 @@ TIME_ZONE = "Asia/Shanghai"
 
 # shanbay -- no need to login
 SHANBAY_CALENDAR_API = (
-    "https://apiv3.shanbay.com/uc/checkin/calendar/dates/"
+    "https://apiv3.shanbay.com/uc/checkin/calendar/dates"
     "?user_id={user_name}&start_date={start_date}&end_date={end_date}"
 )
 
@@ -122,3 +122,6 @@ WEREAD_BASE_URL = "https://weread.qq.com/"
 WEREAD_HISTORY_URL = (
     "https://i.weread.qq.com/readdetail?baseTimestamp=0&count=32&type=1"
 )
+
+# COVID
+COVID_API = "https://pomber.github.io/covid19/timeseries.json"

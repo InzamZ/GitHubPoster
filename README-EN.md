@@ -1,4 +1,5 @@
 # GitHubPoster
+
 Make everything a GitHub svg poster and [skyline](https://skyline.github.com/)!
 
 ##  `svg` in `README` emamples
@@ -6,12 +7,15 @@ Make everything a GitHub svg poster and [skyline](https://skyline.github.com/)!
 ![](https://github.com/yihong0618/GitHubPoster/blob/main/examples/twitter.svg)
 
 ## Circular
+
 ![](https://github.com/yihong0618/GitHubPoster/blob/main/examples/strava_circular.svg)
 
 ## Skyline
+
 ![image](https://user-images.githubusercontent.com/15976103/120966953-80d07180-c799-11eb-8769-92554905ab3f.png)
 
 ## Support
+
 - **[Strava](#strava)**
 - **[Nintendo Switch](#ns)**
 - **[GPX](#GPX)**
@@ -52,17 +56,22 @@ pip3 install -r requirements.txt
 
 ## Use
 
-- Different types are used as specified below
-- You can specify a year such as `--year 2021`, (default) or a year range 2012-2021
-- The generated svg is in `OUT_FOLDER`, named with type (for now)
-- By default, the number of different colors is automatically generated (special colors), you can also specify the color: `--special-number1 10 -- special_number2 20`
-- You can also specify the color: `--special-color1 pink --special-color2 '#33C6A4'`
-- Other parameters can be found with `python3 -m github_poster <type> --help`
-- You can add animation, `--with-animation` (add GOGOGO animation), you can control the animation time `--animation-time 14` (default is 10s)
-- You can save skyline `stl` file `--with-skyline` (default skyline year is to_year), set `--skyline-with-name` to print user name on model
-- With `--is-circular` command,	the svg will be circular and with animation
-- Support for hiding the name of the build type in the title: `--without-type-name`
-- `---stand-with-ukraine` 
+The generated svg is in `OUT_FOLDER`, named with type (for now)
+
+Different types are used as specified below:
+
+- `--year 2021`: You can specify a year (default) or a year range `--year 2012-2021`
+- `--special-number1 10 -- special_number2 20`: By default, the number of different colors is automatically generated (special colors), you can also specify the color
+- `--special-color1 pink --special-color2 '#33C6A4'`: You can also specify the color
+- `--with-animation`: You can add animation (add GOGOGO animation)
+- `--animation-time 14`: you can control the animation time (default is 10s), use with `--with-animation`
+- `--with-skyline`: You can save skyline `stl` file (default skyline year is to_year),
+- `--skyline-with-name`: set to print user name on model, use with `--with-skyline`
+- `--is-circular`: With this command, the svg will be circular and with animation
+- `--without-type-name`: Support for hiding the name of the build type in the title
+- `---stand-with-ukraine`
+
+Other parameters can be found with `python3 -m github_poster <type> --help`
 
 
 ### GPX
@@ -388,7 +397,7 @@ Get Notion Database ID(database_id), see [here](https://developers.notion.com/do
 2. Use the `Share` menu to `Copy link`, and you'll get a URL looks like `https://www.notion.so/{workspace_name}/{database_id}?v={view_id}`
 3. The part that corresponds to `{database_id}` is the ID of your Notion Database
 
-Note：The database need a property which type is `Date`, the value of it will be used to generate the poster. 
+Note：The database need a property which type is `Date`, the value of it will be used to generate the poster.
 The name of the date property shoould be set as option `prop_name`'s value，default value is `Datetime`
 
 ```
@@ -444,13 +453,13 @@ github_poster json --json_file "your json data file" --year 2019-2021 --me Pytho
 
 </details>
 
-### Mutiple
+### Multiple
 
 <details>
-<summary>Make your <code>Mutiple types</code> poster</summary>
+<summary>Make your <code>Multiple types</code> poster</summary>
 <br>
 
-support mutiple types
+support multiple types
 
 ```
 python3 -m github_poster multiple  --types "github, twitter, strava" --twitter_user_name "twitter user name" --github_user_name "github user name" --strava_client_id  "your strava client id"  --strava_client_secret "your strava client secret"  --strava_refresh_token "your strava refresh token"  --year 2020-2021
@@ -475,7 +484,7 @@ github_poster summary  --types "github, twitter, strava" --twitter_user_name "tw
 ```
 </details>
 
-## Jike
+### Jike
 
 <details>
 <summary>Make your <code>Jike(source data) types</code> poster</summary>
@@ -540,6 +549,7 @@ Before submitting PR:
 ![image](https://user-images.githubusercontent.com/15976103/116517636-d21b5480-a901-11eb-90e7-8314404f5f59.png)
 
 # Special thanks
+
 - @[flopp](https://github.com/flopp) great repo [GpxTrackPoster](https://github.com/flopp/GpxTrackPoster)
 - @[JasonkayZK](https://github.com/JasonkayZK) Wakatime loader
 - @[shaonianche](https://github.com/shaonianche) Dota2 loader
@@ -549,4 +559,5 @@ Before submitting PR:
 - @[j178](https://github.com/j178) refator the import logic
 
 # Support
+
 Thanks is enough.

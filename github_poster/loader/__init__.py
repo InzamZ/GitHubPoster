@@ -1,6 +1,7 @@
 from github_poster.loader.bbdc_loader import BBDCLoader
 from github_poster.loader.bilibili_loader import BilibiliLoader
 from github_poster.loader.cichang_loader import CiChangLoader
+from github_poster.loader.covid_loader import CovidLoader
 from github_poster.loader.dota2_loader import Dota2Loader
 from github_poster.loader.duolingo_loader import DuolingoLoader
 from github_poster.loader.forest_loader import ForestLoader
@@ -52,6 +53,7 @@ LOADER_DICT = {
     "jike": JikeLoader,
     "summary": SummaryLoader,
     "weread": WereadLoader,
+    "covid": CovidLoader,
 }
 
 __all__ = (
@@ -82,4 +84,5 @@ __all__ = (
     "SummaryLoader",
     "BBDCLoader",
     "WereadLoader",
+    "CovidLoader",
 )

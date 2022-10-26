@@ -1,4 +1,5 @@
 # GitHubPoster
+
 Make everything a GitHub svg poster and [skyline](https://skyline.github.com/)!
 
 简体中文 | [English](https://github.com/yihong0618/GitHubPoster/blob/main/README-EN.md)
@@ -12,21 +13,22 @@ Make everything a GitHub svg poster and [skyline](https://skyline.github.com/)!
 ![](https://github.com/yihong0618/GitHubPoster/blob/main/examples/summary_2021.svg)
 
 ## Skyline
+
 ![image](https://user-images.githubusercontent.com/15976103/120966953-80d07180-c799-11eb-8769-92554905ab3f.png)
 
 ## Circular
+
 ![](https://github.com/yihong0618/GitHubPoster/blob/main/examples/strava_circular.svg)
 
-
-
 ## 支持
+
 - **[Strava](#strava)**
-- **[开心词场](#cichang)**
-- **[扇贝](#shanbay)**
-- **[不背单词](#bbdc)**
+- **[开心词场](#开心词场)**
+- **[扇贝](#扇贝)**
+- **[不背单词](#不背单词)**
 - **[Nintendo Switch](#ns)**
 - **[GPX](#GPX)**
-- **[多邻国](#duolingo)**
+- **[多邻国](#多邻国)**
 - **[Issue](#Issue)**
 - **[Twitter](#Twitter)**
 - **[YouTube](#Youtube)**
@@ -42,12 +44,13 @@ Make everything a GitHub svg poster and [skyline](https://skyline.github.com/)!
 - **[Forest](#Forest)**
 - **[Json](#json)**
 - **[Multiple](#Multiple)**
-- **[即刻](#Jike)**
-- **[微信读书](#WeRead)**
+- **[即刻](#即刻)**
+- **[微信读书](#微信读书)**
 - **[总结](#Summary)**
-
+- **[Covid](#Covid)**
 
 ## 下载
+
 ```
 git clone https://github.com/yihong0618/GitHubPoster.git
 ```
@@ -58,22 +61,29 @@ pip3 install -U 'github_poster[all]'
 ```
 
 ## 安装(Python3.6+)
+
 ```
 pip3 install -r requirements.txt
 ```
 
 ## 使用
 
-- 不同类型按下方指定的使用方式
-- 可以指定年份如 `--year 2021`, (default) 或年份区间 2012-2021
-- 生成的 svg 在 `OUT_FOLDER` 内, 用 type 命名（暂时）
-- 默认自动生成不同颜色需要的 number（特殊颜色）, 也可以指定如： `--special-number1 10 -- special_number2 20`
-- 也可以指定颜色： `--special-color1 pink --special-color2 '#33C6A4'`
-- 其它参数可以见 `python3 -m github_poster <type> --help`
-- 可以增加动画 `--with-animation` (加入 GOGOGO 动画), 可以控制动画时间 `--animation-time 14`（默认是 10s）
-- 可以增加 Skyline `--with-skyline` (默认生成的为 to_year), 可以使用 `--skyline-with-name` 将用户名打印在 skyline 上
-- 支持 circular svg 配合动画 `--is-circular`
-- 支持隐藏标题中生成类型的名称： `--without-type-name`
+生成的 svg 在 `OUT_FOLDER` 内, 用 type 命名（暂时）
+
+不同类型按下方指定的使用方式：
+
+- `--year 2022`: 可以指定年份(默认)或年份区间 `--year 2012-2022`
+- `--track-color=#f4cccc`: 指定基础颜色
+- `--special-number1 10 -- special_number2 20`: 可以指定特殊颜色，默认自动生成不同颜色需要的 number（特殊颜色）
+- `--special-color1 pink --special-color2 '#33C6A4'`: 指定特殊颜色
+- `--with-animation`: 可以增加动画  (加入 GOGOGO 动画)
+- `--animation-time 14`: 可以控制动画时间（默认是 10s）, 配合 `--with-animation` 使用
+- `--with-skyline`: 可以增加 Skyline  (默认生成的为 to_year)
+- `--skyline-with-name`: 将用户名打印在 Skyline 上, 配合 `--with-skyline` 使用
+- `--is-circular`: 支持 circular svg 配合动画
+- `--without-type-name`: 支持隐藏标题中生成类型的名称
+
+其它参数可以见 `python3 -m github_poster <type> --help`
 
 ### GPX
 
@@ -399,7 +409,6 @@ github_poster wakatime --wakatime_key="your_wakatime_api_key" --year 2019-2021
 使用 `dota2_id` 取得你的游戏数据：https://api.opendota.com/api/players/{dota2_id}/matches.
 更多接口信息：https://docs.opendota.com/#section/Introduction"
 
-
 ```
 python3 -m github_poster dota2 --dota2_id="your dota2 id" --year 2017-2018
 or
@@ -417,7 +426,6 @@ github_poster dota2 --dota2_id="your dota2 id" --year 2017-2018
 
 1. 登录 [Nike](https://www.nike.com) 官网
 2. In Developer -> Application-> Storage -> https:unite.nike.com 中找到 refresh_token
-
 
 ```
 python3 -m github_poster nike --nike_refresh_token="your nike_refresh_token" --year 2012-2021
@@ -457,7 +465,6 @@ github_poster notion --notion_token="your notion_token" --database_id="your data
 ### Garmin
 <details>
 <summary>Make your <code> Garmin </code> poster</summary>
-
 
 需要填写 Garmin 的账号和密码
 
@@ -500,10 +507,10 @@ github_poster json --json_file "your json data file" --year 2019-2021 --me Pytho
 </details>
 
 
-### Mutiple
+### Multiple
 
 <details>
-<summary>Make your <code>Mutiple types</code> poster</summary>
+<summary>Make your <code>Multiple types</code> poster</summary>
 <br>
 
 多个 types 最多支持三个，参数参考上面文档
@@ -530,8 +537,6 @@ or
 github_poster summary --types "github, twitter, strava" --twitter_user_name "twitter user name" --github_user_name "github user name" --strava_client_id  "your strava client id"  --strava_client_secret "your strava client secret"  --strava_refresh_token "your strava refresh token"  --year 2021
 ```
 </details>
-
-
 
 ## 即刻
 
@@ -573,7 +578,6 @@ How to:
 - 微信扫码登录确认，提示没有权限忽略即可
 - 按F12进入开发者模式，依次点 Network -> Doc -> Headers-> cookie。复制 Cookie 字符串;
 
-
 ```
 python3 -m github_poster weread --weread_cookie "your weread cookie" --year 2020-2022 --me "your name"
 or
@@ -581,6 +585,20 @@ github_poster weread --weread_cookie "your weread cookie" --year 2020-2022 --me 
 ```
 
 </details>
+
+### Covid
+
+<details>
+<summary>Make <code> COVID-19 </code> GitHub poster</summary>
+<br>
+
+```
+python3 -m github_poster covid --covid_area China --year 2020-2022 --me China
+or
+github_poster covid --covid_area US --year 2020-2022 --me US
+```
+</details>
+
 
 # 参与项目
 
@@ -621,6 +639,7 @@ github_poster weread --weread_cookie "your weread cookie" --year 2020-2022 --me 
 ![image](https://user-images.githubusercontent.com/15976103/116517636-d21b5480-a901-11eb-90e7-8314404f5f59.png)
 
 # 特别感谢
+
 - @[flopp](https://github.com/flopp) 特别棒的项目 [GpxTrackPoster](https://github.com/flopp/GpxTrackPoster)
 - @[JasonkayZK](https://github.com/JasonkayZK) Wakatime loader
 - @[shaonianche](https://github.com/shaonianche) Dota2 loader
@@ -630,4 +649,5 @@ github_poster weread --weread_cookie "your weread cookie" --year 2020-2022 --me 
 - @[j178](https://github.com/j178) refator the import logic
 
 # 赞赏
+
 谢谢就够了
