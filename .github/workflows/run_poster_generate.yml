@@ -141,9 +141,6 @@ jobs:
         run: |
           python3 -m github_poster multiple --types "github, twitter" --github_user_name ${{ secrets.G_USER_NAME }} --twitter_user_name ${{ secrets.TWITTER_USER_NAME }} --year 2019-2021
 
-      - name: Mv svg files to examples
-        run: |
-           mv OUT_FOLDER/*.svg examples/ && mv OUT_FOLDER/*.stl examples/
       - name: Run safe dir
         run: |
           git config --local user.email "action@github.com"
