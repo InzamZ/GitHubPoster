@@ -144,8 +144,6 @@ jobs:
       - name: Mv svg files to examples
         run: |
            mv OUT_FOLDER/*.svg examples/ && mv OUT_FOLDER/*.stl examples/
-
-
       - name: Run safe dir
         run: |
           git config --local user.email "action@github.com"
