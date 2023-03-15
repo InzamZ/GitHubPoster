@@ -20,23 +20,24 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
       - name: Set up Python
-        uses: actions/setup-python@v1
+        uses: actions/setup-python@v4
         with:
           python-version: 3.7
 
-      # from pdm
+      # from https://github.com/pdm-project/pdm/blob/main/.github/workflows/ci.yml
       - name: Set Variables
         id: set_variables
+        shell: bash
         run: |
-          echo "::set-output name=PY::$(python -c 'import hashlib, sys;print(hashlib.sha256(sys.version.encode()+sys.executable.encode()).hexdigest())')"
-          echo "::set-output name=PIP_CACHE::$(pip cache dir)"
+          echo "PY=$(python -c 'import hashlib, sys;print(hashlib.sha256(sys.version.encode()+sys.executable.encode()).hexdigest())')" >> $GITHUB_OUTPUT
+          echo "PIP_CACHE=$(pip cache dir)" >> $GITHUB_OUTPUT
       - name: Cache PIP
-        uses: actions/cache@v2
+        uses: actions/cache@v3
         with:
           path: ${{ steps.set_variables.outputs.PIP_CACHE }}
-          key: Ubuntu-pip-${{ steps.set_variables.outputs.PY }}
+          key: ${{ runner.os }}-pip-${{ steps.set_variables.outputs.PY }}
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
@@ -57,7 +58,7 @@ jobs:
       - name: Run sync strava script
         if: contains(env.TYPE, 'strava')
         run: |
-          python -m github_poster strava --strava_client_id ${{ secrets.STRAVA_CLIENT_ID }} --strava_client_secret ${{ secrets.STRAVA_CLIENT_SECRET }} --strava_refresh_token ${{ secrets.STRAVA_CLIENT_REFRESH_TOKEN }} --me ${{ env.ME }} --year 2022-2022 --is-circular
+          python -m github_poster strava --strava_client_id ${{ secrets.STRAVA_CLIENT_ID }} --strava_client_secret ${{ secrets.STRAVA_CLIENT_SECRET }} --strava_refresh_token ${{ secrets.STRAVA_CLIENT_REFRESH_TOKEN }} --me ${{ env.ME }} --year 2022-$(date +"%Y") --is-circular
 
       - name: Run sync shanbay script
         if: contains(env.TYPE, 'shanbay')
@@ -77,7 +78,7 @@ jobs:
       - name: Run sync forest script
         if: contains(env.TYPE, 'forest')
         run: |
-          python -m github_poster forest --forest_email ${{ secrets.FOREST_EMAIL }} --forest_password ${{ secrets.FOREST_PASSWORD }} --year 2022 --cn
+          python -m github_poster forest --forest_email ${{ secrets.FOREST_EMAIL }} --forest_password ${{ secrets.FOREST_PASSWORD }} --year $(date +"%Y") --cn
 
       - name: Run sync issue script
         if: contains(env.TYPE, 'issue')
@@ -129,22 +130,17 @@ jobs:
         run: |
           python3 -m github_poster notion --notion_token "${{ secrets.NOTION_TOKEN }}" --database_id "${{ secrets.NOTION_DATABASE_ID }}" --prop_name "${{ secrets.NOTION_PROP_NAME }}" --me ${{ env.ME }}
 
+      - name: Run sync openlanguage script
+        if: contains(env.TYPE, 'openlanguage')
+        run: |
+          python3 -m github_poster openlanguage --openlanguage_user_name "${{ secrets.OPENLANGUAGE_USER_NAME }}" --openlanguage_password "${{ secrets.OPENLANGUAGE_PASSWORD }}" --me ${{ env.ME }}
+
       # change the types to yours
       - name: Run sync multiple script
         if: contains(env.TYPE, 'multiple')
         run: |
           python3 -m github_poster multiple --types "github, twitter" --github_user_name ${{ secrets.G_USER_NAME }} --twitter_user_name ${{ secrets.TWITTER_USER_NAME }} --year 2019-2021
 
-      # - name: Push new svg posters
-      #   uses: github-actions-x/commit@v2.6
-      #   with:
-      #     github-token: ${{ secrets.G_T }}
-      #     commit-message: "Make new poster"
-      #     files: OUT_FOLDER/*
-      #     force-add: "true"
-      #     name: ${{ env.GITHUB_NAME }}
-      #     email: ${{ env.GITHUB_EMAIL }}
-      
       - name: Mv svg files to examples
         run: |
            mv OUT_FOLDER/*.svg examples/ && mv OUT_FOLDER/*.stl examples/
@@ -152,11 +148,8 @@ jobs:
 
       - name: Run safe dir
         run: |
-          git config --global --add safe.directory /github/workspace
-
-      - name: Push README
-        uses: actions-js/push@master
-        with:
-          github_token: ${{ secrets.G_T }}
-          branch: ${{ github.head_ref }}
-          force: true
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          git add .
+          git commit -m 'update new poster' || echo "nothing to commit"
+          git push || echo "nothing to push"

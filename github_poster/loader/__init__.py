@@ -18,9 +18,11 @@ from github_poster.loader.multiple_loader import MultipleLoader
 from github_poster.loader.notion_loader import NotionLoader
 from github_poster.loader.nrc_loader import NRCLoader
 from github_poster.loader.ns_loader import NSLoader
+from github_poster.loader.openlanguage_loader import OpenLanguageLoader
 from github_poster.loader.shanbay_loader import ShanBayLoader
 from github_poster.loader.strava_loader import StravaLoader
 from github_poster.loader.summary_loader import SummaryLoader
+from github_poster.loader.todoist_loader import TodoistLoader
 from github_poster.loader.twitter_loader import TwitterLoader
 from github_poster.loader.wakatime_loader import WakaTimeLoader
 from github_poster.loader.weread_loader import WereadLoader
@@ -54,6 +56,8 @@ LOADER_DICT = {
     "summary": SummaryLoader,
     "weread": WereadLoader,
     "covid": CovidLoader,
+    "todoist": TodoistLoader,
+    "openlanguage": OpenLanguageLoader,
 }
 
 __all__ = (
@@ -85,4 +89,6 @@ __all__ = (
     "BBDCLoader",
     "WereadLoader",
     "CovidLoader",
+    "TodoistLoader",
+    "OpenLanguageLoader",
 )

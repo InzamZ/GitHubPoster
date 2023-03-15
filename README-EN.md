@@ -2,7 +2,7 @@
 
 Make everything a GitHub svg poster and [skyline](https://skyline.github.com/)!
 
-##  `svg` in `README` emamples
+##  `svg` in `README` examples
 
 ![](https://github.com/yihong0618/GitHubPoster/blob/main/examples/twitter.svg)
 
@@ -37,7 +37,8 @@ Make everything a GitHub svg poster and [skyline](https://skyline.github.com/)!
 - **[Multiple](#Multiple)**
 - **[Jike](#Jike)**
 - **[Summary](#Summary)**
-
+- **[Todoist](#Todoist)**
+- **[OpenLanguage](#OpenLanguage)**
 
 ## Download
 ```
@@ -191,7 +192,7 @@ github_poster duolingo --duolingo_user_name ${user_id} --year 2015-2021
 <summary>Make your <code>Issue</code> GitHub poster</summary>
 <br>
 
-Like my issue [issue](https://github.com/yihong0618/2021/issues/5)
+Like my [issue](https://github.com/yihong0618/2021/issues/5)
 
 ```
 	python3 -m github_poster issue --issue_number ${issue_number} --repo_name ${repo_name} --token ${github_token}
@@ -350,7 +351,7 @@ github_poster wakatime --wakatime_key="your_wakatime_api_key" --year 2019-2021
 Find your `dota2_id`, eg：Dendi's ID `70388657`
 Check your dota2_id(steamid32): https://steamid.xyz/.
 Check your game data: https://api.opendota.com/api/players/{dota2_id}/matches.
-more info: https://docs.opendota.com/#section/Introduction"
+more info: https://docs.opendota.com/#section/Introduction
 
 
 ```
@@ -398,7 +399,7 @@ Get Notion Database ID(database_id), see [here](https://developers.notion.com/do
 3. The part that corresponds to `{database_id}` is the ID of your Notion Database
 
 Note：The database need a property which type is `Date`, the value of it will be used to generate the poster.
-The name of the date property shoould be set as option `prop_name`'s value，default value is `Datetime`
+The name of the date property should be set as option `prop_name`'s value，default value is `Datetime`
 
 ```
 python3 -m github_poster notion --notion_token="your notion_token" --database_id="your database_id" --prop_name="your prop_name"
@@ -490,7 +491,7 @@ github_poster summary  --types "github, twitter, strava" --twitter_user_name "tw
 <summary>Make your <code>Jike(source data) types</code> poster</summary>
 <br>
 
-need to find your Jike cookie from `Jike (XHR)` and `jike_user_id`, `jike_user_id` can be find in your personal page link
+need to find your Jike cookie from `Jike (XHR)` and `jike_user_id`, `jike_user_id` can be found in your personal page link
 eg. in the link `https://web.okjike.com/u/82D23B32-CF36-4C59-AD6F-D05E3552CBF3`, `82D23B32-CF36-4C59-AD6F-D05E3552CBF3` is the user_id
 
 ps. only get the data for the last year
@@ -508,6 +509,39 @@ Option argument `count_type`, you can specify statistics type:
 - `comment`: post be comment num
 - `repost`: post be repost num
 
+</details>
+
+### Todoist
+
+<details>
+<summary>Make <code> Todoist Task Completion </code> GitHub poster</summary>
+
+Because of Todoist policies, only users with Pro Plan(or above) can retrieve full historical activity from APIs.
+
+Get your token please find on [Todoist Developer Docs](https://developer.todoist.com/guides/#developing-with-todoist)
+
+<br>
+
+```
+python3 -m github_poster todoist --year 2021-2022 --todoist_token "your todoist dev token" --me "your name"
+or
+github_poster todoist --year 2021-2022 --todoist_token "your todoist dev token" --me "your name"
+```
+</details>
+
+### OpenLanguage
+
+<details>
+<summary>Make <code> OpenLanguage </code> GitHub poster</summary>
+
+For some reason, make sure your password only has letters and numbers, otherwise you will get an error.
+<br>
+
+```
+python3 -m github_poster openlanguage --year 2021-2022 --openlanguage_user_name "you account" --openlanguage_password "you password" --me "your name"
+or
+github_poster openlanguage --year 2021-2022 --openlanguage_user_name "you account" --openlanguage_password "you password" --me "your name"
+```
 </details>
 
 # Contribution
@@ -557,6 +591,8 @@ Before submitting PR:
 - @[ruter](https://github.com/ruter) Notion loader
 - @[frostming](https://github.com/frostming) `CI` refator and some Actions code
 - @[j178](https://github.com/j178) refator the import logic
+- @[iamshaynez](https://github.com/iamshaynez) todolist loader
+- @[guaguaguaxia](https://github.com/guaguaguaxia) OpenLanguage loader
 
 # Support
 

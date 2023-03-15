@@ -48,6 +48,8 @@ Make everything a GitHub svg poster and [skyline](https://skyline.github.com/)!
 - **[微信读书](#微信读书)**
 - **[总结](#Summary)**
 - **[Covid](#Covid)**
+- **[Todoist](#Todoist)**
+- **[开言英语](#开言英语)**
 
 ## 下载
 
@@ -574,7 +576,7 @@ github_poster jike --jike_cookie "your jike cookie" --jike_user_id "your jike us
 
 How to:
 
-- 浏览器打开 https://x.weread.qq.com
+- 浏览器打开 https://weread.qq.com/
 - 微信扫码登录确认，提示没有权限忽略即可
 - 按F12进入开发者模式，依次点 Network -> Doc -> Headers-> cookie。复制 Cookie 字符串;
 
@@ -599,6 +601,38 @@ github_poster covid --covid_area US --year 2020-2022 --me US
 ```
 </details>
 
+### Todoist
+
+<details>
+<summary>Make <code> Todoist 完成任务 </code> GitHub poster</summary>
+
+Todoist因为接口限制，只有Pro Plan的付费用户可以获取所有的历史数据，并统计对应的热图。
+
+Token获取请参考：[Todoist Developer Docs](https://developer.todoist.com/guides/#developing-with-todoist)
+
+<br>
+
+```
+python3 -m github_poster todoist --year 2021-2022 --todoist_token "your todoist dev token" --me "your name"
+or
+github_poster todoist --year 2021-2022 --todoist_token "your todoist dev token" --me "your name"
+```
+</details>
+
+### 开言英语
+
+<details>
+<summary>Make <code> 开言英语 </code> GitHub poster</summary>
+
+因为某种原因，请保证你的密码只有字母和数字，否则会报错。
+<br>
+
+```
+python3 -m github_poster openlanguage --year 2021-2022 --openlanguage_user_name "you account" --openlanguage_password "you password" --me "your name"
+or
+github_poster openlanguage --year 2021-2022 --openlanguage_user_name "you account" --openlanguage_password "you password" --me "your name"
+```
+</details>
 
 # 参与项目
 
@@ -647,7 +681,10 @@ github_poster covid --covid_area US --year 2020-2022 --me US
 - @[ruter](https://github.com/ruter) Notion loader
 - @[frostming](https://github.com/frostming) `CI` refator and some Actions code
 - @[j178](https://github.com/j178) refator the import logic
-
+- @[iamshaynez](https://github.com/iamshaynez) todolist loader
+- @[guaguaguaxia](https://github.com/guaguaguaxia) OpenLanguage loader
 # 赞赏
 
 谢谢就够了
+
+Just enjoy it

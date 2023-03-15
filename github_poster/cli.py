@@ -12,7 +12,7 @@ from github_poster.drawer import Drawer
 from github_poster.err import DepNotInstalledError
 from github_poster.loader import LOADER_DICT
 from github_poster.poster import Poster
-from github_poster.utils import parse_years
+from github_poster.utils import parse_years, reduce_year_list
 
 OUT_FOLDER = os.path.join(os.getcwd(), "OUT_FOLDER")
 
@@ -84,8 +84,9 @@ def run():
             )
             p.loader_list = loader.loader_list
 
-    if args.type != "summary":
+    if args.type not in ["multiple", "summary"]:
         tracks, years = loader.get_all_track_data()
+        years = reduce_year_list(years, tracks)
         p.units = args.loader.unit
         p.set_tracks(tracks, years, type_list)
     else:
@@ -120,10 +121,16 @@ def run():
     # make different drawer
     is_circular = args.is_circular
     d = CircularDrawer if is_circular else Drawer
+    # TODO refactor the file name things
     if args.type == "issue":
         issue_number = args_dict.get("issue_number", "1")
         repo_name = args_dict.get("repo_name", "").replace("/", "_")
         file_name = f"issue_{repo_name}_{issue_number}"
+    # for twitter back up
+    if args.type == "twitter":
+        twitter_user_name = args_dict.get("twitter_user_name", "")
+        file_name = f"twitter_{twitter_user_name}"
+
     if args.type == "summary":
         file_name = f"summary_{to_year}"
         p.is_summary = True
